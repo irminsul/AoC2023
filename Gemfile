@@ -2,5 +2,5 @@
 
 source 'https://rubygems.org'
 
-gem 'rubocop', '~> 1.57'
-gem 'rubocop-performance', '~> 1.19'
+gem 'rubocop', '~> 1.57', require: false
+gem 'rubocop-performance', '~> 1.19', require: false
