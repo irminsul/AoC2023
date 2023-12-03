@@ -6,18 +6,18 @@ require 'parslet'
 
 CubeSet = Data.define(:red, :green, :blue) do
   # @param other [CubeSet]
-  # @return CubeSet
+  # @return [CubeSet]
   def +(other)
     self.class.new(*deconstruct.zip(other.deconstruct).map(&:sum))
   end
 
   # @param other [CubeSet]
-  # @return Boolean
+  # @return [Boolean]
   def >=(other)
     deconstruct.zip(other.deconstruct).all? { |a, b| a >= b }
   end
 
-  # @return Integer
+  # @return [Integer]
   def power
     deconstruct.reduce(&:*)
   end
@@ -25,12 +25,12 @@ end
 
 Game = Data.define(:id, :draws) do
   # @param cube_set [CubeSet]
-  # @return Boolean
+  # @return [Boolean]
   def possible?(cube_set)
     draws.all? { |d| cube_set >= d }
   end
 
-  # @return CubeSet
+  # @return [CubeSet]
   def min_cubes
     CubeSet.new(*draws.map(&:deconstruct).transpose.map(&:max))
   end
